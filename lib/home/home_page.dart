@@ -1,10 +1,12 @@
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+  const HomePage({super.key, required this.mytitle});
 
-  final String title;
+  final String mytitle;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -24,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(widget.mytitle),
       ),
       body: Center(
         child: Column(

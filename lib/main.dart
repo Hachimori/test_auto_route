@@ -1,29 +1,27 @@
+
 import 'package:flutter/material.dart';
-import 'package:test_auto_route/home/home_page.dart';
+import 'package:test_auto_route/router/router.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final appRouter = AppRouter();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return MaterialApp.router(
+      routerConfig: appRouter.config(),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-      ),
-      home: const Navigator(
-        pages: [
-          MaterialPage(
-            key: ValueKey<String>('home'),
-            child: HomePage(title: 'Flutter Demo Home Page'),
-          ),
-        ],
       ),
     );
   }
