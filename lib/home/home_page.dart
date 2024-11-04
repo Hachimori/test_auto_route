@@ -1,6 +1,7 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:test_auto_route/router/router.gr.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -42,11 +43,33 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 'increment',
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(height: 10),
+          FloatingActionButton(
+            heroTag: 'forward',
+            onPressed: () {
+              context.router.push(
+                DetailRoute(
+                  id: '1',
+                  msg: 'Hello',
+                  complexParam: const ['A', 'B', 'C'],
+                ),
+              );
+            },
+            tooltip: 'Forward',
+            child: const Icon(Icons.forward),
+          ),
+        ],
+      )
     );
   }
 }
